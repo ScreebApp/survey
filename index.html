@@ -60,11 +60,15 @@
             js.async = 1;
             d.getElementsByTagName("head")[0].appendChild(js);
         }(window, document, 'script', '$screeb', 'https://t.screeb.app/tag.js'));
-        $screeb('init', channelId);
-        if (!!campaignId)
-            $screeb('campaign.start', campaignId, {
-                multiple: true, // multiple response to survey
-            });
+
+      if (!!campaignId) {
+          $screeb('init', channelId, {disable-targeting: true});
+          $screeb('campaign.start', campaignId, {
+              multiple: true, // multiple response to survey
+          });
+      } else {
+          $screeb('init', channelId);
+      }
     </script>
     <!-- END OF SCREEB WIDGET -->
 
